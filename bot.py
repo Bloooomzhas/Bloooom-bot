@@ -74,7 +74,7 @@ async def about_handler(message: Message):
 async def contacts_handler(message: Message):
     await message.answer("Связаться с нами можно через:\n"
 "📧 Email: staff@blooooom.kz\n"
-"📱 Telegram: @blooooom_support\n"
+"📱 Telegram: @oljawave\n"
 "📞 Телефон: +7 (708) 517-64-91")
 
 @dp.message(F.web_app_data)

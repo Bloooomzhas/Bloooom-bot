@@ -3,7 +3,7 @@ import logging
 from aiogram import Bot
 
 TOKEN = "7656620027:AAFMvmxiOqelHS3hC2IwsaWthlAg3DxRPmA"
-user_ids = [461357308, 70548333, 110375161, 698011964]
+user_ids = [461357308]
 
 logging.basicConfig(level=logging.INFO)
 bot = Bot(token=TOKEN)

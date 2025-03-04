@@ -16,9 +16,9 @@ dp = Dispatcher()
 user_languages = {}
 
 LANGUAGES = {
-    "kk": "🇰🇿 Қазақша",
-    "ru": "🇷🇺 Русский",
-    "en": "🇬🇧 English"
+    "kk": "\ud83c\udde6\ud83c\uddff Қазақша",
+    "ru": "\ud83c\uddf7\ud83c\uddfa Русский",
+    "en": "\ud83c\uddec\ud83c\udde7 English"
 }
 
 MESSAGES = {
@@ -54,28 +54,23 @@ MESSAGES = {
 # Клавиатура для выбора языка
 language_keyboard = ReplyKeyboardMarkup(
     keyboard=[
-        [KeyboardButton(LANGUAGES["kk"])],
-        [KeyboardButton(LANGUAGES["ru"])],
-        [KeyboardButton(LANGUAGES["en"])]
+        [KeyboardButton(text=LANGUAGES["kk"])],
+        [KeyboardButton(text=LANGUAGES["ru"])],
+        [KeyboardButton(text=LANGUAGES["en"])],
     ],
     resize_keyboard=True
 )
 
-
 @dp.message(F.text == "/start")
 async def start_handler(message: Message):
     user_id = message.from_user.id
-    lang = user_languages.get(user_id, "kk")  
+    lang = user_languages.get(user_id, "kk")
 
     keyboard = ReplyKeyboardMarkup(
         keyboard=[
             [KeyboardButton(
-                text="💐 Жазылу рәсімдеу" if lang == "kk" else "💐 Оформить подписку" if lang == "ru" else "💐 Subscribe",
-                web_app=WebAppInfo(url=f"https://oljawave.github.io/bloom-tg-miniapp/?user_id={user_id}")
+                text=MESSAGES[lang]["orders"]
             )],
-            [KeyboardButton(text=MESSAGES[lang]["orders"])],
-            [KeyboardButton(text="ℹ️ Біздің жайлы" if lang == "kk" else "ℹ️ О нас" if lang == "ru" else "ℹ️ About us")],
-            [KeyboardButton(text="📞 Байланыс" if lang == "kk" else "📞 Контакты" if lang == "ru" else "📞 Contact us")],
             [KeyboardButton(text="🌍 Тілді өзгерту / Сменить язык / Change Language")]
         ],
         resize_keyboard=True
@@ -83,54 +78,6 @@ async def start_handler(message: Message):
 
     await message.answer(MESSAGES[lang]["start"], reply_markup=keyboard)
 
-@dp.message(F.text == "📦 Менің тапсырыстарым")
-@dp.message(F.text == "📦 Мои заказы")
-@dp.message(F.text == "📦 My Orders")
-async def my_orders(message: types.Message):
-    user_id = message.from_user.id
-    lang = user_languages.get(user_id, "kk")
-
-    response = requests.get(f"https://bloom-backend-production.up.railway.app/orders/{user_id}")
-
-    if response.status_code == 200:
-        orders = response.json().get("orders", [])
-
-        if not orders:
-            await message.answer(MESSAGES[lang]["no_orders"])
-            return
-        
-        text = "Сіздің тапсырыстарыңыз:\n\n" if lang == "kk" else "Ваши заказы:\n\n" if lang == "ru" else "Your Orders:\n\n"
-        for order in orders:
-            dates = ', '.join(order['dates'])
-            text += (
-                f"📌 <b>Тапсырыс #{order['order_id']}</b>\n"
-                f"📅 <b>Күні:</b> {dates}\n"
-                f"💰 <b>Бюджет:</b> {order['price_range']}\n"
-                f"📍 <b>Мекен-жайы:</b> {order['address']}\n"
-                f"📞 <b>Телефон:</b> {order['phone']}\n\n"
-            )
-
-        await message.answer(text, parse_mode="HTML")
-    else:
-        await message.answer(MESSAGES[lang]["no_orders"])
-
-@dp.message(F.text == "ℹ️ Біздің жайлы")
-@dp.message(F.text == "ℹ️ О нас")
-@dp.message(F.text == "ℹ️ About us")
-async def about_handler(message: Message):
-    user_id = message.from_user.id
-    lang = user_languages.get(user_id, "kk")
-    await message.answer(MESSAGES[lang]["about"])
-
-@dp.message(F.text == "📞 Байланыс")
-@dp.message(F.text == "📞 Контакты")
-@dp.message(F.text == "📞 Contact us")
-async def contacts_handler(message: Message):
-    user_id = message.from_user.id
-    lang = user_languages.get(user_id, "kk")
-    await message.answer(MESSAGES[lang]["contacts"])
-
-# 🌍 Выбор языка
 @dp.message(F.text == "🌍 Тілді өзгерту / Сменить язык / Change Language")
 async def change_language(message: Message):
     await message.answer(MESSAGES["kk"]["choose_lang"], reply_markup=language_keyboard)

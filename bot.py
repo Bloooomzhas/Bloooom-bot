@@ -51,12 +51,16 @@ MESSAGES = {
     }
 }
 
-language_keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
-language_keyboard.add(
-    KeyboardButton(LANGUAGES["kk"]),
-    KeyboardButton(LANGUAGES["ru"]),
-    KeyboardButton(LANGUAGES["en"])
+# Клавиатура для выбора языка
+language_keyboard = ReplyKeyboardMarkup(
+    keyboard=[
+        [KeyboardButton(LANGUAGES["kk"])],
+        [KeyboardButton(LANGUAGES["ru"])],
+        [KeyboardButton(LANGUAGES["en"])]
+    ],
+    resize_keyboard=True
 )
+
 
 @dp.message(F.text == "/start")
 async def start_handler(message: Message):

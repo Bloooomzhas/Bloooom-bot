@@ -45,7 +45,7 @@ async def start_handler(message: Message):
 
 
 
-@dp.message(F.text == "/delete")
+@dp.message(F.text.startswith("/delete"))
 async def delete_order(message: Message):
     user_id = message.from_user.id
     await message.answer("Пожалуйста, отправьте ID заказа для удаления.")

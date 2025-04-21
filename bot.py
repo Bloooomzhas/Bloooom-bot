@@ -50,7 +50,6 @@ async def delete_order(message: Message):
     user_id = message.from_user.id
     await message.answer("Пожалуйста, отправьте ID заказа для удаления.")
 
-
     @dp.message(F.text)
     async def handle_order_id(msg: Message):
         order_id = msg.text.strip()
@@ -59,7 +58,7 @@ async def delete_order(message: Message):
             await msg.answer("Пожалуйста, введите корректный ID заказа.")
             return
 
-        response = requests.post(
+        response = requests.delete(
             f"http://api.bloooom.kz:8443/orders/{order_id}/delete", 
             json={"chat_id": user_id}
         )
@@ -68,6 +67,7 @@ async def delete_order(message: Message):
             await msg.answer(f"Заказ с ID {order_id} успешно удален.")
         else:
             await msg.answer(f"Ошибка: не удалось удалить заказ с ID {order_id}. Возможно, вы не имеете доступа.")
+
 
 
 

@@ -59,10 +59,11 @@ async def delete_order(message: Message):
             await msg.answer("Пожалуйста, введите корректный ID заказа.")
             return
 
-        response = requests.post(
+        response = requests.delete(
             f"http://api.bloooom.kz:8443/orders/{order_id}/delete", 
             json={"chat_id": user_id}
         )
+
         
         if response.status_code == 200:
             await msg.answer(f"Заказ с ID {order_id} успешно удален.")

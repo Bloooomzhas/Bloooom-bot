@@ -45,7 +45,7 @@ async def start_handler(message: Message):
 
 
 
-@dp.message(F.text.startswith("/delete"))
+@dp.message(F.text == "/delete")
 async def delete_order(message: Message):
     user_id = message.from_user.id
     await message.answer("Пожалуйста, отправьте ID заказа для удаления.")
@@ -59,11 +59,10 @@ async def delete_order(message: Message):
             await msg.answer("Пожалуйста, введите корректный ID заказа.")
             return
 
-        response = requests.delete(
+        response = requests.post(
             f"http://api.bloooom.kz:8443/orders/{order_id}/delete", 
             json={"chat_id": user_id}
         )
-
         
         if response.status_code == 200:
             await msg.answer(f"Заказ с ID {order_id} успешно удален.")

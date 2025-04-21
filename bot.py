@@ -91,7 +91,6 @@ async def set_language(message: Message):
     lang_map = {"🇰🇿 Қазақша": "kk", "🇷🇺 Русский": "ru", "🇬🇧 English": "en"}
     user_languages[user_id] = lang_map[message.text]
 
-    # Создаем клавиатуру с основными кнопками
     keyboard = ReplyKeyboardMarkup(
         keyboard=[
             [KeyboardButton(
@@ -123,9 +122,20 @@ async def my_orders(message: types.Message):
             return
         
         text = get_translation(user_id, "orders")
+        order_statuses = {
+            1: "new",
+            2: "processing",
+            3: "completed",
+            4: "canceled"
+        }
+        
         for order in orders:
+            status_key = order['status_id']
+            status_name = get_translation(user_id, f"status.{order_statuses[status_key]}")
+
             text += get_translation(user_id, "order_details").format(
                 order_id=order['order_id'],
+                status=status_name,
                 dates=', '.join(order['dates']),
                 price_range=order['price_range'],
                 address=order['address'],
@@ -135,6 +145,7 @@ async def my_orders(message: types.Message):
         await message.answer(text, parse_mode="HTML")
     else:
         await message.answer(get_translation(user_id, "no_orders"))
+
 
 @dp.message(lambda message: message.text == get_translation(message.from_user.id, "buttons.about_us"))
 async def about_handler(message: Message):

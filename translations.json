@@ -9,14 +9,10 @@
         "choose_language": "Басқа тілді таңдаңыз:",
         "no_orders": "Сізде әлі тапсырыстар жоқ.",
         "orders": "Сіздің тапсырыстарыңыз:\n\n",
-        "order_details": "📌 <b>Тапсырыс #{order_id}</b>\n🔹 <b>Статус:</b> {status}\n📅 <b>Жеткізу күндері:</b> {dates}\n💰 <b>Бюджет:</b> {price_range}\n📍 <b>Мекенжай:</b> {address}\n📞 <b>Телефон:</b> {phone}\n\n",
+        "order_details": "📌 <b>Тапсырыс #{order_id}</b>\n📅 <b>Жеткізу күндері:</b> {dates}\n💰 <b>Бюджет:</b> {price_range}\n📍 <b>Мекенжай:</b> {address}\n📞 <b>Телефон:</b> {phone}\n\n",
         "about": "🌸Blooooom – әрдайым жаныңызда болатын жеке флористіңіз. Біздің көмегімізбен гүлдер әлемін ашып, өміріңізге көбірек қуаныш қосыңыз.\n💐 Гүл жеткізуге жазылыңыз және жаңа букеттерді сізге ыңғайлы уақытта алыңыз!",
         "contacts": "Бізбен байланысу:\n📧 Email: staff@blooooom.kz\n📱 Telegram: @oljawave\n📞 Телефон: +7 (708) 517-64-91",
-        "order_success": "✅ Сіздің тапсырысыңыз сәтті рәсімделді!",
-        "status.new": "Жаңа тапсырыс",
-        "status.processing": "Өңделуде",
-        "status.completed": "Аяқталды",
-        "status.canceled": "Бас тартылды"
+        "order_success": "✅ Сіздің тапсырысыңыз сәтті рәсімделді!"
     },
     "ru": {
         "start": "Привет! 🌸\nДобро пожаловать в Blooooom.\nЭтот бот поможет вам оформить подписку на доставку цветов.\n\nВыберите действие из меню ниже ⬇️",
@@ -28,14 +24,10 @@
         "choose_language": "Выберите другой язык:",
         "no_orders": "У вас пока нет заказов.",
         "orders": "Ваши заказы:\n\n",
-        "order_details": "📌 <b>Заказ #{order_id}</b>\n🔹 <b>Статус:</b> {status}\n📅 <b>Даты доставки:</b> {dates}\n💰 <b>Бюджет:</b> {price_range}\n📍 <b>Адрес:</b> {address}\n📞 <b>Телефон:</b> {phone}\n\n",
+        "order_details": "📌 <b>Заказ #{order_id}</b>\n📅 <b>Даты доставки:</b> {dates}\n💰 <b>Бюджет:</b> {price_range}\n📍 <b>Адрес:</b> {address}\n📞 <b>Телефон:</b> {phone}\n\n",
         "about": "🌸Blooooom – это ваш персональный флорист, который всегда под рукой. Откройте мир цветов с нами и добавьте больше радости в вашу жизнь.\n💐 Оформите подписку на цветы и получайте свежие букеты в удобное для вас время!",
         "contacts": "Связаться с нами можно через:\n📧 Email: staff@blooooom.kz\n📱 Telegram: @oljawave\n📞 Телефон: +7 (708) 517-64-91",
-        "order_success": "✅ Ваш заказ успешно оформлен!",
-        "status.new": "Новый заказ",
-        "status.processing": "В процессе",
-        "status.completed": "Завершён",
-        "status.canceled": "Отменён"
+        "order_success": "✅ Ваш заказ успешно оформлен!"
     },
     "en": {
         "start": "Hello! 🌸\nWelcome to Blooooom.\nThis bot will help you subscribe to flower delivery.\n\nChoose an action from the menu below ⬇️",
@@ -47,13 +39,9 @@
         "choose_language": "Choose Language:",
         "no_orders": "You have no orders yet.",
         "orders": "Your orders:\n\n",
-        "order_details": "📌 <b>Order #{order_id}</b>\n🔹 <b>Status:</b> {status}\n📅 <b>Delivery dates:</b> {dates}\n💰 <b>Budget:</b> {price_range}\n📍 <b>Address:</b> {address}\n📞 <b>Phone:</b> {phone}\n\n",
+        "order_details": "📌 <b>Order #{order_id}</b>\n📅 <b>Delivery dates:</b> {dates}\n💰 <b>Budget:</b> {price_range}\n📍 <b>Address:</b> {address}\n📞 <b>Phone:</b> {phone}\n\n",
         "about": "🌸Blooooom is your personal florist, always at hand. Discover the world of flowers with us and add more joy to your life.\n💐 Subscribe to flower delivery and receive fresh bouquets at a convenient time for you!",
         "contacts": "Contact us via:\n📧 Email: staff@blooooom.kz\n📱 Telegram: @oljawave\n📞 Phone: +7 (708) 517-64-91",
-        "order_success": "✅ Your order has been successfully placed!",
-        "status.new": "New order",
-        "status.processing": "In progress",
-        "status.completed": "Completed",
-        "status.canceled": "Canceled"
+        "order_success": "✅ Your order has been successfully placed!"
     }
 }

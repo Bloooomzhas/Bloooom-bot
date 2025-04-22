@@ -125,7 +125,6 @@ async def my_orders(message: types.Message):
         for order in orders:
             text += get_translation(user_id, "order_details").format(
                 order_id=order['order_id'],
-                status=order['status_name_ru', 'Неизвестно'],
                 dates=', '.join(order['dates']),
                 price_range=order['price_range'],
                 address=order['address'],

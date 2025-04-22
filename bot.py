@@ -18,9 +18,16 @@ with open("translations.json", "r", encoding="utf-8") as file:
 
 user_languages = {}
 
-def get_translation(user_id, key):
-    lang = user_languages.get(user_id, "ru")
-    return translations.get(lang, {}).get(key, key)
+def get_translation(user_id, key, **kwargs):
+    lang = user_languages.get(user_id, "kk")
+    lang_data = translations.get(lang, {})
+    
+    if key == "statuses":
+        status_id = str(kwargs.get("status_id"))
+        return lang_data.get("statuses", {}).get(status_id, "Неизвестно")
+
+    return lang_data.get(key, key)
+
 
 @dp.message(F.text == "/start")
 async def start_handler(message: Message):
@@ -123,9 +130,10 @@ async def my_orders(message: types.Message):
         
         text = get_translation(user_id, "orders")
         for order in orders:
+            status = get_translation(user_id, key="statuses", status_id=order["status_id"])
             text += get_translation(user_id, "order_details").format(
                 order_id=order['order_id'],
-                status=order.get('status_name_ru', 'Неизвестно'),
+                status=status,
                 dates=', '.join(order['dates']),
                 price_range=order['price_range'],
                 address=order['address'],
@@ -135,6 +143,7 @@ async def my_orders(message: types.Message):
         await message.answer(text, parse_mode="HTML")
     else:
         await message.answer(get_translation(user_id, "no_orders"))
+
 
 @dp.message(lambda message: message.text == get_translation(message.from_user.id, "buttons.about_us"))
 async def about_handler(message: Message):

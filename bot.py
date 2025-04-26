@@ -5,7 +5,7 @@ from aiogram import Bot, Dispatcher, types, F
 from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton, WebAppInfo
 import requests
 
-TOKEN = "7656620027:AAFponBkkmhkQvRPkF7yrh_9OXNrrFpmqc8"
+TOKEN = "7656620027:AAFI0Y3xqip_liuRAiRhep8kRgg61iTkNYE"
 ADMIN_ID = 123456789
 
 logging.basicConfig(level=logging.INFO)
